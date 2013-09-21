@@ -1,0 +1,3 @@
+module FFmpeg
+  # Your code goes here...
+end
