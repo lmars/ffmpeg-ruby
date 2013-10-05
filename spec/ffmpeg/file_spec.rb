@@ -15,7 +15,15 @@ describe FFmpeg::File do
 
   describe "streams" do
     let(:filename) { "ruby-logo.msmpeg4.480x480.wmv" }
-    let(:stream) { { "type" => "video", "codec" => "msmpeg4v3" } }
+    let(:stream) do
+      {
+        "type"     => "video",
+        "codec"    => "msmpeg4v3",
+        "duration" => 1.0,
+        "width"    => 480,
+        "height"   => 480
+      }
+    end
 
     its(:streams) { should == [stream] }
   end

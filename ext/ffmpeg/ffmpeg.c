@@ -10,6 +10,7 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
   VALUE stream;
   VALUE media_type;
   VALUE codec_name;
+  double duration;
   int i;
 
   av_context = avformat_alloc_context();
@@ -38,6 +39,12 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
 
     codec_name = rb_str_new2(avcodec_get_name(av_stream->codec->codec_id));
     rb_hash_aset(stream, rb_str_new2("codec"), codec_name);
+
+    duration = av_stream->duration * av_q2d(av_stream->time_base);
+    rb_hash_aset(stream, rb_str_new2("duration"), rb_float_new(duration));
+
+    rb_hash_aset(stream, rb_str_new2("width"), INT2NUM(av_stream->codec->width));
+    rb_hash_aset(stream, rb_str_new2("height"), INT2NUM(av_stream->codec->height));
 
     rb_ary_push(streams, stream);
   }
