@@ -50,6 +50,9 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
   }
   rb_hash_aset(fileinfo, rb_str_new2("streams"), streams);
 
+  avformat_close_input(&av_context);
+  avformat_free_context(av_context);
+
   return fileinfo;
 }
 
