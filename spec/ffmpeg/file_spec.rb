@@ -12,4 +12,11 @@ describe FFmpeg::File do
       its(:format_name) { should match(/^ASF/) }
     end
   end
+
+  describe "streams" do
+    let(:filename) { "ruby-logo.msmpeg4.480x480.wmv" }
+    let(:stream) { { "type" => "video", "codec" => "msmpeg4v3" } }
+
+    its(:streams) { should == [stream] }
+  end
 end

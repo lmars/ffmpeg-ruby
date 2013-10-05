@@ -8,6 +8,10 @@ module FFmpeg
       fileinfo["format_name"]
     end
 
+    def streams
+      fileinfo["streams"]
+    end
+
     private
     def fileinfo
       @fileinfo ||= FFmpeg.get_file_info(@filepath)
