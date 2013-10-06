@@ -1,4 +1,4 @@
-require "ffmpeg/ffmpeg"
+require "ffmpeg_ext"
 require "ffmpeg/file"
 
 module FFmpeg

@@ -26,4 +26,4 @@ unless have_library("avutil", "av_get_media_type_string")
   fail_with_error "libavutil is missing. You should install the libavutil library"
 end
 
-create_makefile("ffmpeg")
+create_makefile("ffmpeg_ext")

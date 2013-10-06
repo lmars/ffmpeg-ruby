@@ -58,7 +58,7 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
 
 VALUE mFFmpeg;
 
-void Init_ffmpeg() {
+void Init_ffmpeg_ext() {
   av_register_all();
   mFFmpeg = rb_define_module("FFmpeg");
   rb_define_module_function(mFFmpeg, "get_file_info", ffmpeg_get_file_info, 1);
