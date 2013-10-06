@@ -16,6 +16,18 @@ module FFmpeg
       video_stream["codec"]
     end
 
+    def video_duration
+      video_stream["duration"]
+    end
+
+    def video_width
+      video_stream["width"]
+    end
+
+    def video_height
+      video_stream["height"]
+    end
+
     private
     def fileinfo
       @fileinfo ||= FFmpeg.get_file_info(@filepath)

@@ -7,6 +7,9 @@ describe FFmpeg::File do
   subject { FFmpeg::File.new(filepath) }
 
   its(:video_codec) { should == "h264" }
+  its(:video_duration) { should == 1.0 }
+  its(:video_width) { should == 480 }
+  its(:video_height) { should == 480 }
 
   describe "format_name" do
     its(:format_name) { should match(/^QuickTime/) }
