@@ -10,6 +10,7 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
   VALUE stream;
   VALUE media_type;
   VALUE codec_name;
+  AVRational frame_rate;
   double duration;
   int i;
 
@@ -42,6 +43,11 @@ VALUE ffmpeg_get_file_info(VALUE self, VALUE filepath) {
 
     duration = av_stream->duration * av_q2d(av_stream->time_base);
     rb_hash_aset(stream, rb_str_new2("duration"), rb_float_new(duration));
+
+    rb_hash_aset(stream, rb_str_new2("frames"), INT2NUM(av_stream->nb_frames));
+
+    frame_rate = av_stream->avg_frame_rate;
+    rb_hash_aset(stream, rb_str_new2("frame_rate"), rb_float_new(av_q2d(frame_rate)));
 
     rb_hash_aset(stream, rb_str_new2("width"), INT2NUM(av_stream->codec->width));
     rb_hash_aset(stream, rb_str_new2("height"), INT2NUM(av_stream->codec->height));

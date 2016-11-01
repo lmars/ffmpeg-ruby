@@ -20,6 +20,14 @@ module FFmpeg
       video_stream["duration"]
     end
 
+    def video_frames
+      video_stream["frames"]
+    end
+
+    def video_frame_rate
+      video_stream["frame_rate"]
+    end
+
     def video_width
       video_stream["width"]
     end
